@@ -9,9 +9,12 @@ def emo_detect():
 
     response = emotion_detection(text_to_analyze)
 
-    message = (f"For the given statement, the system response is 'anger': {response['anger']}, "
-    f"'disgust': {response['disgust']}, 'fear': {response['fear']}, 'joy': {response['joy']}, "
-    f"and 'sadness': {response['sadness']}. The dominant emotion is {response['dominant_emotion']}.")
+    if response['dominant_emotion'] == None:
+        message = "Invalid text! Please try again!"
+    else:
+        message = (f"For the given statement, the system response is 'anger': {response['anger']}, "
+            f"'disgust': {response['disgust']}, 'fear': {response['fear']}, 'joy': {response['joy']}, "
+            f"and 'sadness': {response['sadness']}. The dominant emotion is {response['dominant_emotion']}.")
 
     return message
 
